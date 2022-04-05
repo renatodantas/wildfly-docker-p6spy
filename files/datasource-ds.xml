@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<datasources>
+    <datasource jndi-name="java:jboss/datasources/DatasourceDS" pool-name="DatasourceDS" enabled="true" use-java-context="true">
+        <!-- Este host é uma forma de um container referenciar outro container da mesma network -->
+        <!-- https://forums.docker.com/t/how-to-reach-localhost-on-host-from-docker-container/113321 -->
+        <connection-url>jdbc:postgresql://host.docker.internal:5432/datasource</connection-url>
+        <driver>p6spy</driver>
+        <pool>
+          <min-pool-size>1</min-pool-size>
+          <max-pool-size>5</max-pool-size>
+          <prefill>true</prefill>
+        </pool>
+        <security>
+            <user-name>postgres</user-name>
+            <password>postgres</password>
+        </security>
+    </datasource>
+
+    <drivers>
+        <driver name="postgresql" module="org.postgresql">
+            <driver-class>org.postgresql.Driver</driver-class>
+        </driver>
+        <driver name="p6spy" module="com.p6spy">
+             <driver-class>com.p6spy.engine.spy.P6SpyDriver</driver-class>
+         </driver>
+    </drivers>
+</datasources>

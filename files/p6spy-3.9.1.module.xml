@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="com.p6spy">
+    <resources>
+        <resource-root path="p6spy-3.9.1.jar"/>
+    </resources>
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="javax.transaction.api"/>
+        <!-- make sure to refer to module holding real driver -->
+        <module name="org.postgresql"/>
+    </dependencies>
+</module>
